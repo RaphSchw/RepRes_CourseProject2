@@ -1,0 +1,14 @@
+---
+title: "RepRes_Project2"
+output: pdf_document
+date: "`r Sys.Date()`"
+---
+
+```{r}
+library(R.cache)
+ifelse(dir.exists("./data"), "", dir.create("./data"))
+data_file_zip <- "./data/storm_data.csv.bz2"
+ifelse(file.exists(data_file_zip),"",download.file(url = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2", destfile = data_file_zip))
+storm_data <- read.csv2(file = data_file_zip, header = T, sep = ",")
+```
+
